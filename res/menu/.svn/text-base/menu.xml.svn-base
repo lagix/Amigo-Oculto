@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuLimparLista"
+    	  android:title="@string/btnLimparLista"
+    	  android:icon="@drawable/stop"
+    />
+    
+    <item android:id="@+id/menuTiposSorteios"
+    	  android:title="Sortear"
+    	  android:icon="@drawable/tick"
+    >
+    	<menu>
+    		<item android:id="@+id/menuSortear"
+    	  		  android:title="@string/btnSortearAmigo"
+    	  		  
+    		/>
+		    <item android:id="@+id/menuSMS"
+      		      android:title="@string/sorteioSMS" 
+    		/>
+    		<item android:id="@+id/menuEMail"
+          		  android:title="@string/sorteioEmail" 
+    		/>
+    	</menu>
+    </item>
+    
+
+    <item android:id="@+id/menuAddContato"
+    	  android:title="@string/addContato"
+    	  android:icon="@drawable/happy"
+    />
+    <item android:id="@+id/menuSobre"
+    	  android:title="@string/sobre"
+    	  android:icon="@drawable/light"
+    />
+    <item android:id="@+id/menuConfiguracao"
+    	  android:title="@string/config"
+    />
+</menu>

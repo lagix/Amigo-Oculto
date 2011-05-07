@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    
+    <string name="app_name">Amigo Oculto (Beta 0.1.6)</string>
+<string name="intro">Bem Vindo ao Amigo Oculto! ;-D</string>
+<string name="btnAdicionarAmigo">Adicionar</string>
+<string name="about">Aplicativo para sorteio do Amigo Oculto</string>
+<string name="msgUserAdded">Amigo Adicionado</string>
+
+<string name="btnSortearAmigo">Sortear Amigo</string>
+<string name="erroSorteio">Favor informar os amigos para realizar o sorteio</string>
+    <string name="msgAmigoSorteado">O amigo sorteado foi:  </string>
+    <string name="erroAddAmigo">Informe os dados do amigo antes de Adicionar</string>
+    <string name="btnLimparLista">Limpar a lista de  Amigos</string>
+    <string name="repetirAmigos">Amigos poderão ser sorteados mais de uma vez</string>
+<string name="sortEnd">Todos os amigos foram sorteados.</string>
+<string name="clearList">Tem certeza que deseja apagar a lista de amigos?</string>
+    <string name="btnSim">Sim</string>
+    <string name="btnNao">Não</string>
+<string name="sorteioEmail">Sorteio por E-Mail</string>
+    <string name="sorteioSMS">Sorteio por SMS</string>
+<string name="msgCleanList">Lista de Amigos limpa</string>
+    <string name="hintNome">Nome do Amigo</string>
+    <string name="hintTelefone">Telefone do Amigo</string>
+    <string name="hintEMail">E-Mail do Amigo</string>
+<string name="ola">Olá  </string>
+    <string name="amigoSorteado">O seu amigo sorteado foi: </string>
+    <string name="byLagix">Amigo Oculto is created by Lagix.com.br</string>
+    <string name="eMailSubject">Amigo Sorteado pelo Amigo Oculto</string>
+<string name="addContato">Adicionar Contato</string>
+<string name="sobre">Sobre</string>
+    <string name="msgSobre">Amigo Oculto\n\nDesenvolvido por Bruno Lage - lagix.com.br\nE-Mail: brunodila (@) gmail.com\nSkype:brunodila\n\nAinda estamos em fases iniciais. Por favor envie seu comentário.</string>
+    <string name="btnCritica">Critica, Sugestão ou Elogio</string>
+<string name="msgAccountNotFound">Nenhuma conta do Google/GMail foi encontrada para realizar o sorteio por E-Mail</string>
+<string name="btnOk">Ok</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="msgSenhaEMail">Informe a senha do e-mail</string>
+<string name="sortingFriends">Sorteando amigos...</string>
+<string name="config">Configuração</string>
+<string name="nullablefieldexception">Nenhum valor  informado para o campo ?.</string>
+</resources>

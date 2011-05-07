@@ -1,0 +1,52 @@
+package br.com.amigooculto.validations;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+import br.com.amigooculto.annotations.AssignAnnotation;
+import br.com.amigooculto.annotations.RequiredField;
+import br.com.amigooculto.enums.TypeAnnotation;
+
+public class Validate {
+	
+	
+	public Validate(Object obj) throws Exception
+	{
+		Class c = obj.getClass();
+		
+		ValidateFields(c,obj);
+		
+		ValidateMethods(c,obj);
+	}
+	
+	private void ValidateFields(Class c, Object obj) throws Exception
+	{
+		for (Field f : c.getFields())
+		{
+			throw new Exception("Not implemented yet");
+		}
+	}
+	
+	private void ValidateMethods(Class c,Object obj) throws Exception
+	{
+		for (Method m: c.getMethods())
+		{
+			for(Annotation a: m.getAnnotations())
+			{
+				AssignAnnotation ass = a.annotationType().getAnnotation(AssignAnnotation.class);
+				
+				 if(ass.tipo() == TypeAnnotation.RequiredField)
+				 {
+					RequiredField rf = (RequiredField) a;
+					
+					if (m.getName().indexOf("get") >= 0)
+					{
+						RequiredFieldValidate.Validate(m.invoke(obj, null), rf.DisplayValue());
+					}
+				 }
+			}
+		}
+	}
+
+}

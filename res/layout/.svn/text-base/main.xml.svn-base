@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/intro"
+    />
+    
+<EditText  
+	android:id="@+id/editNomeAmigo"  
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent" 
+	android:inputType="textPersonName"
+	android:textSize="14.0sp"
+	android:hint="@string/hintNome"
+	/>    
+
+<EditText
+	android:id="@+id/editEmailAmigo"
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:inputType="textEmailAddress"
+	android:textSize="14.0sp"
+	android:hint="@string/hintEMail"
+	/>
+	
+<EditText
+	android:id="@+id/editTelefoneAmigo"
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:inputType="number"
+	android:textSize="14.0sp"
+	android:hint="@string/hintTelefone"
+	/>	
+
+<Button 
+	android:id="@+id/btnAdicionarAmigo" 
+	android:text="@string/btnAdicionarAmigo"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	/>
+
+<CheckBox 
+	android:id="@+id/chkRepetirAmigos"
+	android:text="@string/repetirAmigos" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:checked="false"
+	/>
+</LinearLayout>
