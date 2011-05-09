@@ -4,10 +4,12 @@ public final class RequiredFieldValidate {
 
 	public final static void Validate(Object obj,String displayName) 
 	{
-		if (obj == null) 
+		String strObj = (String)obj;
+		
+		if (strObj.length() == 0) 
 		{	
-			throw new NullPointerException(displayName);
-		}
+			throw new NullPointerException(displayName+" não informado.");
+		}	
 	}
 	
 }

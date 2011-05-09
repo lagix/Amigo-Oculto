@@ -4,14 +4,17 @@ import java.util.List;
 
 import br.com.amigooculto.business.Amigo;
 import br.com.amigooculto.business.Sorteio;
+import br.com.amigooculto.validations.Validate;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +24,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Principal extends Activity implements OnClickListener {
@@ -33,6 +37,8 @@ public class Principal extends Activity implements OnClickListener {
 	private static final int REQUEST_CODE = 10;
 	private String email = null;
 	private String senha = null;
+	private Validate validar;
+//	private Vibrator vibracao; 
 
 	
     /** Called when the activity is first created. */
@@ -63,21 +69,26 @@ public class Principal extends Activity implements OnClickListener {
     
     public void adicionarAmigo()
     {
-    	Amigo amigo = new Amigo();
-    	amigo.setNome(edtNomeAmigo.getText().toString());
-    	amigo.setTelefone(edtTelefoneAmigo.getText().toString());
-    	amigo.setEMail(edtEMailAmigo.getText().toString());
-		/*
-		if (!amigo.valido()) {
-			Toast toast = Toast.makeText(getApplicationContext(), R.string.erroAddAmigo, Toast.LENGTH_SHORT);
-			toast.show();
-		}
-		else {*/
-			sorteio.addAmigo(amigo);
+    	try
+    	{
+	    	Amigo amigo = new Amigo();
+	    	amigo.setNome(edtNomeAmigo.getText().toString());
+	    	amigo.setTelefone(edtTelefoneAmigo.getText().toString());
+	    	amigo.setEMail(edtEMailAmigo.getText().toString());
+	    	
+	    	this.validar = new Validate(amigo);
+		
+			this.sorteio.addAmigo(amigo);
 			Toast toast = Toast.makeText(getApplicationContext(), R.string.msgUserAdded, Toast.LENGTH_SHORT);
 			toast.show();
 			limparEdit();
-		//}
+    	}
+    	catch (Exception e) {
+    		//vibracao = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+    		//vibracao.vibrate(1000);
+    		
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+		}
     }
     
     public void limparEdit()

@@ -16,6 +16,7 @@ public class Amigo {
 	
 	@RequiredField(DisplayValue = "E-Mail")
 	private String email = null;
+	
 	private String twitter = null;
 	private String facebook = null;
 	private String orkut = null;

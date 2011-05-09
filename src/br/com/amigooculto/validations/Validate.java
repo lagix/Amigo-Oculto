@@ -11,15 +11,15 @@ public class Validate {
 	
 	public Validate(Object obj) throws Exception
 	{
-		Class c = obj.getClass();
+		ValidateFields(obj);
 		
-		ValidateFields(c,obj);
-		
-		ValidateMethods(c,obj);
+	//	ValidateMethods(obj);
 	}
 	
-	private void ValidateFields(Class c, Object obj) throws Exception
+	private void ValidateFields(Object obj) throws Exception
 	{
+		Class c = obj.getClass();
+		
 		for (Field f : c.getDeclaredFields())
 		{
 			for(Annotation a: f.getAnnotations())
@@ -39,8 +39,10 @@ public class Validate {
 		}
 	}
 	
-	private void ValidateMethods(Class c,Object obj) throws Exception
+	private void ValidateMethods(Object obj) throws Exception
 	{
+		Class c = obj.getClass();
+		
 		for (Method m: c.getMethods())
 		{
 			for(Annotation a: m.getAnnotations())
