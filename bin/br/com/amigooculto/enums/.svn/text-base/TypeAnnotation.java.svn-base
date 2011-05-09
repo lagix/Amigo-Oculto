@@ -1,6 +1,0 @@
-package br.com.amigooculto.enums;
-
-public enum TypeAnnotation {
-
-	RequiredField;
-}
