@@ -7,15 +7,16 @@ import br.com.amigooculto.business.Sorteio;
 import br.com.amigooculto.validations.Validate;
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.accounts.AccountManagerFuture;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,7 +25,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Principal extends Activity implements OnClickListener {
@@ -38,7 +38,6 @@ public class Principal extends Activity implements OnClickListener {
 	private String email = null;
 	private String senha = null;
 	private Validate validar;
-//	private Vibrator vibracao; 
 
 	
     /** Called when the activity is first created. */
@@ -79,14 +78,16 @@ public class Principal extends Activity implements OnClickListener {
 	    	this.validar = new Validate(amigo);
 		
 			this.sorteio.addAmigo(amigo);
+			
 			Toast toast = Toast.makeText(getApplicationContext(), R.string.msgUserAdded, Toast.LENGTH_SHORT);
 			toast.show();
+			
+			Log.i("ao", "Amigo adicionado na lista: "+amigo.getNome());
+			
 			limparEdit();
     	}
     	catch (Exception e) {
-    		//vibracao = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
-    		//vibracao.vibrate(1000);
-    		
+    		Log.w ("ao", e.getMessage());
 			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 		}
     }
@@ -109,6 +110,8 @@ public class Principal extends Activity implements OnClickListener {
 		if (amigoSorteado==null) {
 			Toast toast = Toast.makeText(getApplicationContext(), R.string.erroSorteio, Toast.LENGTH_SHORT);
 			toast.show();			
+			
+			Log.e("ao",getString(R.string.erroSorteio));
 		}
 		else {
 				Toast toast = Toast.makeText(getApplicationContext(), R.string.msgAmigoSorteado, Toast.LENGTH_SHORT);
@@ -116,9 +119,13 @@ public class Principal extends Activity implements OnClickListener {
 				toast = Toast.makeText(getApplicationContext(), amigoSorteado.getNome(), Toast.LENGTH_LONG);
 				toast.show();
 				
+				Log.i("ao",getString(R.string.msgAmigoSorteado)+" "+amigoSorteado.getNome());
+				
 				if (!sorteio.isSortAvaliable()) {
 					toast = Toast.makeText(getApplicationContext(), R.string.sortEnd, Toast.LENGTH_LONG);
 					toast.show();
+					
+					Log.i("ao",getString(R.string.sortEnd));
 				}
 		}
     }
@@ -127,6 +134,8 @@ public class Principal extends Activity implements OnClickListener {
     	sorteio.clearList();
     	Toast toast = Toast.makeText(getApplicationContext(), R.string.msgCleanList, Toast.LENGTH_SHORT);
 		toast.show();
+		
+		Log.i("ao",getString(R.string.msgCleanList));
     }
     
 	public void onClick(View v) {
@@ -146,7 +155,13 @@ public class Principal extends Activity implements OnClickListener {
 			break;
 			case R.id.menuSortear:sortear();
 			break;
-			case R.id.menuEMail:sortearPorEMail();
+			case R.id.menuEMail:try {
+				setEMail();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				Log.e("ao",e.getMessage());
+				Toast.makeText(this, "Ocorreu um erro ao enviar e-mail",Toast.LENGTH_LONG);
+			}
 			break;
 			case R.id.menuAddContato:lista();
 			break;
@@ -157,6 +172,8 @@ public class Principal extends Activity implements OnClickListener {
 	}
 	
 	public void sortearPorSMS(){
+		Log.i("ao","Sorteando por SMS");
+		
 		sorteio.sortearPorSMS();
 		
 		while (sorteio.isSortAvaliable()) {
@@ -168,11 +185,13 @@ public class Principal extends Activity implements OnClickListener {
 		
 		Toast toast = Toast.makeText(getApplicationContext(), R.string.sortEnd, Toast.LENGTH_LONG);
 		toast.show();
+		
+		Log.i("ao",getString(R.string.sortEnd));
 	}
 	
 	public void sortearPorEMail() {
 		try {
-			setEMail();
+			Log.i("ao","Sorteando por E-Mail");
 			
 			sorteio.sortearPorEMail();
 		
@@ -191,16 +210,11 @@ public class Principal extends Activity implements OnClickListener {
 			Toast toast = Toast.makeText(getApplicationContext(), R.string.sortEnd, Toast.LENGTH_LONG);
 			toast.show();
 		
+			Log.i("ao",getString(R.string.sortEnd));
 		}
 		catch(Exception e)
 		{
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(e.toString())
-				.setCancelable(true);
-
-			AlertDialog alertDialog = builder.create();
-			alertDialog.show();
-			
+			Log.e("ao", e.getMessage());		
 		}
 	}
 	
@@ -209,42 +223,60 @@ public class Principal extends Activity implements OnClickListener {
 		// <uses-permission android:name="android.permission.SEND_SMS"/>
 		SmsManager m = SmsManager.getDefault();
 		String destinationNumber = amigo.getTelefone();  
-		String text = getString(R.string.ola)+" "+amigo.getNome()+", \n"+getString(R.string.amigoSorteado)+" "+amigoSoreteado.getNome()+"\n"+getString(R.string.byLagix);  
-		m.sendTextMessage(destinationNumber, null, text, null, null);
+		String text = getString(R.string.ola)+" "+amigo.getNome()+", \n"+getString(R.string.amigoSorteado)+" "+amigoSoreteado.getNome()+"\n"+getString(R.string.byLagix);
+		//m.sendTextMessage(destinationNumber, null, text, null, null);
+		
+		m.sendMultipartTextMessage(destinationNumber, null, m.divideMessage(text), null, null);
 	}
 	
-	public void setEMail() throws Exception {
-		email = null;
-		senha = null;
-		Account[] accounts = AccountManager.get(this).getAccountsByType("com.google");
-		final EditText edtSenhaEMail = new EditText(this);
+	public void setEMail() throws Exception 
+	{
+		AccountManager mgr = AccountManager.get(this); 
 		
-		if(!(accounts.length>0)) {
+		Account[] accounts = mgr.getAccountsByType("com.google");
+		
+		if(!(accounts.length>0)) 
+		{
 			throw new Exception(getString(R.string.msgAccountNotFound));
 		}
 		else {
 			for (Account account : accounts) {
 				
-				if (account.name.contains("gmail")) {
-					email = account.name;
+				if (account.name.contains("gmail")) 
+				{
+					email = account.name;	
+					
+					AlertDialog.Builder alert = new AlertDialog.Builder(this);
+					final EditText input = new EditText(this);
+					alert.setView(input);
+					alert.setPositiveButton("Enviar", new DialogInterface.OnClickListener() 
+					{
+						public void onClick(DialogInterface dialog, int whichButton) 
+						{
+							senha = input.getText().toString().trim();
+							
+							sortearPorEMail();
+						}
+					});
+
+					alert.setNegativeButton("Cancelar",
+							new DialogInterface.OnClickListener() 
+					{
+								public void onClick(DialogInterface dialog, int whichButton) 
+								{
+									dialog.dismiss();
+									dialog.cancel();
+								}
+							});
+				
+					alert.show();
+					
 				}
 			}
 			
 			if (email.length()<=0) {
 				throw new Exception(getString(R.string.msgAccountNotFound));
 			}
-			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(getString(R.string.msgSenhaEMail)+ " " + email)
-			.setCancelable(true)
-			.setView(edtSenhaEMail)
-			.setPositiveButton(R.string.btnOk, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					senha = edtSenhaEMail.getText().toString();
-				}
-			});
-			
-			builder.create().show();
 		}
 	}
 	
@@ -252,17 +284,14 @@ public class Principal extends Activity implements OnClickListener {
 		String text = getString(R.string.ola)+" "+amigo.getNome()+", \n"+getString(R.string.amigoSorteado)+" "+amigoSoreteado.getNome()+"\n"+getString(R.string.byLagix);
 		
 		try {   
+			Log.i("ao","Enviando E-Mail para: "+amigo.getEMail().toString());
+			
             GMailSender sender = new GMailSender(email, senha);
             sender.sendMail("Amigo Oculto",text,   
                     email,   
                     amigo.getEMail().toString());   
         } catch (Exception e) {   
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(e.toString())
-				.setCancelable(true);
-
-			AlertDialog alertDialog = builder.create();
-			alertDialog.show();  
+        	Log.e("ao", e.getMessage());
         }
 	}
 	
@@ -297,12 +326,7 @@ public class Principal extends Activity implements OnClickListener {
 				}
 			}
 		} catch (Exception e){
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(e.toString())
-				.setCancelable(true);
-
-			AlertDialog alertDialog = builder.create();
-			alertDialog.show();
+			Log.e("ao", e.getMessage());
 		}
 	}
 }

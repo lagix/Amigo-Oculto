@@ -31,7 +31,6 @@ public final class R {
         public static final int itemLista=0x7f060000;
         public static final int lstContatos=0x7f060002;
         public static final int menuAddContato=0x7f060010;
-        public static final int menuConfiguracao=0x7f060012;
         public static final int menuEMail=0x7f06000f;
         public static final int menuLimparLista=0x7f06000b;
         public static final int menuSMS=0x7f06000e;

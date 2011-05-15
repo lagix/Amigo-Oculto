@@ -32,7 +32,4 @@
     	  android:title="@string/sobre"
     	  android:icon="@drawable/light"
     />
-    <item android:id="@+id/menuConfiguracao"
-    	  android:title="@string/config"
-    />
 </menu>
