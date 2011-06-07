@@ -221,12 +221,20 @@ public class Principal extends Activity implements OnClickListener {
 	public void mensagemSMS(Amigo amigo,Amigo amigoSoreteado) {
 		// AndroidManifest.xml must have the following permission:
 		// <uses-permission android:name="android.permission.SEND_SMS"/>
-		SmsManager m = SmsManager.getDefault();
-		String destinationNumber = amigo.getTelefone();  
-		String text = getString(R.string.ola)+" "+amigo.getNome()+", \n"+getString(R.string.amigoSorteado)+" "+amigoSoreteado.getNome()+"\n"+getString(R.string.byLagix);
-		//m.sendTextMessage(destinationNumber, null, text, null, null);
 		
-		m.sendMultipartTextMessage(destinationNumber, null, m.divideMessage(text), null, null);
+		try
+		{
+			SmsManager m = SmsManager.getDefault();
+			
+			String destinationNumber = amigo.getTelefone();  
+			String text = getString(R.string.ola)+" "+amigo.getNome()+", \n"+getString(R.string.amigoSorteado)+" "+amigoSoreteado.getNome()+"\n"+getString(R.string.byLagix);
+			
+			m.sendMultipartTextMessage(destinationNumber, null, m.divideMessage(text), null,null);
+		}
+		catch (Exception e)
+		{
+			Log.e("ao", e.getMessage()+"\n"+e.getStackTrace());
+		}
 	}
 	
 	public void setEMail() throws Exception 
