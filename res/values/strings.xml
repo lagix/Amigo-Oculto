@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
     
-    <string name="app_name">Amigo Oculto (Beta 0.1.6)</string>
+    <string name="app_name">Amigo Oculto 1.0</string>
 <string name="intro">Bem Vindo ao Amigo Oculto! ;-D</string>
 <string name="btnAdicionarAmigo">Adicionar</string>
 <string name="about">Aplicativo para sorteio do Amigo Oculto</string>

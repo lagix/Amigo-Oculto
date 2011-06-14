@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest android:versionCode="2" android:versionName="0.1.6"
+<manifest android:versionCode="2" android:versionName="1.0"
     package="br.com.amigooculto" xmlns:android="http://schemas.android.com/apk/res/android">
     <application android:description="@string/about"
         android:icon="@drawable/android" android:label="@string/app_name">
-        <activity android:label="@string/app_name" android:name=".Principal">
+        <activity android:label="@string/app_name" android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -12,8 +12,8 @@
         <activity android:name=".Lista"/>
         <activity android:name=".Sobre"/>
         <activity android:name=".Configuracao"/>
-        <activity android:name="br.com.amigooculto.database.Database"/>
         <activity android:name=".AmigoOculto"/>
+        <activity android:name=".Principal"></activity>
     </application>
     <uses-sdk android:minSdkVersion="7"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>

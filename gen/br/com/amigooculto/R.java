@@ -15,9 +15,10 @@ public final class R {
         public static final int happy=0x7f020001;
         public static final int icon=0x7f020002;
         public static final int light=0x7f020003;
-        public static final int phone=0x7f020004;
-        public static final int stop=0x7f020005;
-        public static final int tick=0x7f020006;
+        public static final int logo=0x7f020004;
+        public static final int phone=0x7f020005;
+        public static final int stop=0x7f020006;
+        public static final int tick=0x7f020007;
     }
     public static final class id {
         public static final int LinearLayout01=0x7f060001;
@@ -29,15 +30,17 @@ public final class R {
         public static final int editNomeAmigo=0x7f060003;
         public static final int editTelefoneAmigo=0x7f060005;
         public static final int itemLista=0x7f060000;
+        public static final int logo=0x7f06000b;
         public static final int lstContatos=0x7f060002;
-        public static final int menuAddContato=0x7f060010;
-        public static final int menuEMail=0x7f06000f;
-        public static final int menuLimparLista=0x7f06000b;
-        public static final int menuSMS=0x7f06000e;
-        public static final int menuSobre=0x7f060011;
-        public static final int menuSortear=0x7f06000d;
-        public static final int menuTiposSorteios=0x7f06000c;
+        public static final int menuAddContato=0x7f060012;
+        public static final int menuEMail=0x7f060011;
+        public static final int menuLimparLista=0x7f06000d;
+        public static final int menuSMS=0x7f060010;
+        public static final int menuSobre=0x7f060013;
+        public static final int menuSortear=0x7f06000f;
+        public static final int menuTiposSorteios=0x7f06000e;
         public static final int msgSobre=0x7f060008;
+        public static final int textView1=0x7f06000c;
     }
     public static final class layout {
         public static final int item_lista=0x7f030000;
