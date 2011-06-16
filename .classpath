@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="external/activation.jar"/>
 	<classpathentry kind="lib" path="external/additionnal.jar"/>
 	<classpathentry kind="lib" path="external/mail.jar"/>
+	<classpathentry kind="lib" path="external/GoogleAdMobAdsSdk-4.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
