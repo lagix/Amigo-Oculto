@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    
+    <string name="app_name">Amigo Oculto 0.1.6 beta</string>
+<string name="intro">Welcome to Amigo Oculto! ;-D</string>
+<string name="btnAdicionarAmigo">Add</string>
+<string name="about">Application for secret friend play</string>
+<string name="msgUserAdded">Friend added</string>
+
+<string name="btnSortearAmigo">Raffle off Friend</string>
+<string name="erroSorteio">Please tell your friends to raffle off</string>
+    <string name="msgAmigoSorteado">The friend raffled off was:  </string>
+    <string name="erroAddAmigo">Enter the data before adding friend</string>
+    <string name="btnLimparLista">Clear to Buddy List</string>
+    <string name="repetirAmigos">Friends may be raffle off more than once</string>
+<string name="sortEnd">All his friends were raffled off</string>
+<string name="clearList">Are you sure you want to delete the list of friends?</string>
+    <string name="btnSim">Yes</string>
+    <string name="btnNao">No</string>
+<string name="sorteioEmail">Raffle off by E-Mail</string>
+    <string name="sorteioSMS">Raffle off by SMS</string>
+<string name="msgCleanList">Friends list has been cleaned</string>
+    <string name="hintNome">Friend name</string>
+    <string name="hintTelefone">Phone Friend</string>
+    <string name="hintEMail">Friend E-Mail</string>
+<string name="ola">Hello  </string>
+    <string name="amigoSorteado">Your friend raffled off was: </string>
+    <string name="byLagix">Amigo Oculto was created by Lagix.com.br</string>
+    <string name="eMailSubject">Friend raffled off by Amigo Oculto</string>
+<string name="addContato">Add Contact</string>
+<string name="sobre">About</string>
+    <string name="msgSobre">Amigo Oculto\n\nDeveloped by Bruno Lage - lagix.com.br\nE-Mail: brunodila (@) gmail.com\nSkype:brunodila\n\nPlease send your comment.\nSource:https://github.com/lagix/Amigo-Oculto</string>
+    <string name="btnCritica">Comments</string>
+<string name="msgAccountNotFound">No Google Account / GMail was found</string>
+<string name="btnOk">Ok</string>
+    <string name="btnCancelar">Cancel</string>
+    <string name="msgSenhaEMail">Enter the e-mail password</string>
+<string name="sortingFriends">Raffle off...</string>
+<string name="config">Configuration</string>
+<string name="nullablefieldexception">No value given for the field ?.</string>
+<string name="back">Back</string>
+</resources>
